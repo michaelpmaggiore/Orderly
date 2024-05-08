@@ -14,6 +14,7 @@ import Login from './Login';
 import Register from './Register';
 import Schedule from './Schedule';
 import ClassID from './ClassID';
+import AddClass from './AddClass';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule/new" element={<AddClass />} />
 
         {/* These routes is to pass the front end requirement of frontend routes. Serves no other purpose. */}
         <Route path="/class/:id" element={<ClassID />} /> 

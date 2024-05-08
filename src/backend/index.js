@@ -227,6 +227,13 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/schedule/new', async (req, res) => {
+
+    const classItem = new Class(req.body);
+
+    res.status(201).json(classItem);
+});
+
 // app.get('/schedule', async (req, res) => {
 //     const user = await User.findById(req.user._id);
 //     res.json(user.classes);

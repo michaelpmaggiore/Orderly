@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'; // Import Login CSS file for same layout
+import './Login.css';
 
 const SignUpPage = () => {
   let navigate = useNavigate();

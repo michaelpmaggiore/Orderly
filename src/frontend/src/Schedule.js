@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch  } from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -14,11 +14,13 @@ function Schedule() {
     fetch(`http://localhost:3001/schedule`)
       .then(response => response.json())
       .then(data => {
-        const events = data.map(classItem => ({
-          title: classItem.name,
-          start: new Date(classItem.start),
-          end: new Date(classItem.end),
-        }));
+        const events = data
+          .filter(classItem => classItem.name && classItem.start && classItem.end)
+          .map(classItem => ({
+            title: classItem.name,
+            start: new Date(classItem.start),
+            end: new Date(classItem.end),
+          }));
         setSchedule(events);
       });
   }, []);
