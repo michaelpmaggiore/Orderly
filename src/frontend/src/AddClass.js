@@ -38,7 +38,7 @@ const AddClass = () => {
     .then(data => {
       if (data._id) {
         alert('Class added successfully');
-        navigate('/schedule');
+        navigate(`/schedule/${userId}`);
       } else {
         alert('Failed to add class');
       }
