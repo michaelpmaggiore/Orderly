@@ -8,6 +8,7 @@ import NewProject from './NewProject'; // Component to create a new project
 import ProjectDetail from './ProjectDetail'; // Component to display todos in a project
 import Project from './ProjectList';
 import Login from './Login.js';
+import SignUp from './SignUp.js';
 import './App.css';
 import HomePage from './HomePage';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/project/:projectId/todo/:todoId" element={<TodoDetail />} /> 
 
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );
