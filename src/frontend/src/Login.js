@@ -16,9 +16,24 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+  
+    fetch('http://localhost:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        console.log('Login successful');
+        // Handle successful login here, e.g. by setting user data in state
+      } else {
+        console.log('Login failed');
+        // Handle failed login here, e.g. by showing an error message
+      }
+    });
   };
 
   return (

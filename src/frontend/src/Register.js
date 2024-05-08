@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'; // Import Login CSS file for same layout
 
 const SignUpPage = () => {
+  let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -21,10 +22,28 @@ const SignUpPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    // Here you can add the registration logic
+  
+    // Add a check to ensure the password and confirmPassword are the same
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match');
+      return;
+    }
+  
+    fetch('http://localhost:3001/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: email, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data._id) {
+        alert('Registration successful, redirecting to login page...');
+        navigate('/login');
+      } else {
+        alert('Registration failed');}
+    });
   };
 
   return (

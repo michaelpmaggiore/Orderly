@@ -1,0 +1,26 @@
+.schedule-page {
+    padding: 20px;
+  }
+  
+  .schedule-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .schedule-item {
+    margin-bottom: 10px;
+  }
+  
+  .add-class-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .add-class-button:hover {
+    background-color: #0056b3;
+  }

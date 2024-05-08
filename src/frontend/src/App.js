@@ -33,7 +33,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/schedule" element={<Schedule />} />
 
-        {/* These routes is to pass the front end requirement of frontend routes. Servers no other purpose. */}
+        {/* These routes is to pass the front end requirement of frontend routes. Serves no other purpose. */}
         <Route path="/class/:id" element={<ClassID />} /> 
 
       </Routes>
