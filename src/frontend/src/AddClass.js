@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import './AddClass.css';
 
 const AddClass = () => {
   const navigate = useNavigate();
@@ -46,59 +47,60 @@ const AddClass = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Class Name:
-        <input type="text" value={class_name} onChange={e => setClassName(e.target.value)} />
-      </label>
-      <label>
-        Class Code:
-        <input type="text" value={class_code} onChange={e => setClassCode(e.target.value)} />
-      </label>
-      <label>
-        CRN:
-        <input type="text" value={crn} onChange={e => setCrn(e.target.value)} />
-      </label>
-      <label>
-        Instructor:
-        <input type="text" value={instructor} onChange={e => setInstructor(e.target.value)} />
-      </label>
-      <label>
-        Time:
-        <input type="text" value={time} onChange={e => setTime(e.target.value)} />
-      </label>
-      <label>
-        Days:
-        <div>
-          <label>
-            <input type="checkbox" checked={days.mon} onChange={e => setDays({...days, mon: e.target.checked})} />
-            Monday
-          </label>
-          <label>
-            <input type="checkbox" checked={days.tue} onChange={e => setDays({...days, tue: e.target.checked})} />
-            Tuesday
-          </label>
-          <label>
-            <input type="checkbox" checked={days.wed} onChange={e => setDays({...days, wed: e.target.checked})} />
-            Wednesday
-          </label>
-          <label>
-            <input type="checkbox" checked={days.thu} onChange={e => setDays({...days, thu: e.target.checked})} />
-            Thursday
-          </label>
-          <label>
-            <input type="checkbox" checked={days.fri} onChange={e => setDays({...days, fri: e.target.checked})} />
-            Friday
-          </label>
-        </div>
-      </label>
-      <button type="submit">Add Class</button>
-      <label></label>
-      <label></label>
-      <label></label>
-
-      <button type="button" onClick={handleGoBack}>Go back to schedule</button>
-    </form>
+    <div className="page-container">
+      <button className="back-button" onClick={handleGoBack}>Back</button>
+      <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <h1>Add Class</h1>
+        <label className="form-label">
+          Class Name:
+          <input className="form-input" type="text" value={class_name} onChange={e => setClassName(e.target.value)} />
+        </label>
+        <label className="form-label">
+          Class Code:
+          <input className="form-input" type="text" value={class_code} onChange={e => setClassCode(e.target.value)} />
+        </label>
+        <label className="form-label">
+          CRN:
+          <input className="form-input" type="text" value={crn} onChange={e => setCrn(e.target.value)} />
+        </label>
+        <label className="form-label">
+          Instructor:
+          <input className="form-input" type="text" value={instructor} onChange={e => setInstructor(e.target.value)} />
+        </label>
+        <label className="form-label">
+          Time:
+          <input className="form-input" type="text" value={time} onChange={e => setTime(e.target.value)} />
+        </label>
+        <label className="checkbox-container form-label">
+          Days:
+          <div>
+            <label className="checkbox-label">
+              <input type="checkbox" checked={days.mon} onChange={e => setDays({...days, mon: e.target.checked})} />
+              Monday
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" checked={days.tue} onChange={e => setDays({...days, tue: e.target.checked})} />
+              Tuesday
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" checked={days.wed} onChange={e => setDays({...days, wed: e.target.checked})} />
+              Wednesday
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" checked={days.thu} onChange={e => setDays({...days, thu: e.target.checked})} />
+              Thursday
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" checked={days.fri} onChange={e => setDays({...days, fri: e.target.checked})} />
+              Friday
+            </label>
+          </div>
+        </label>
+        <button className="submit-button" type="submit">Add Class</button>
+      </form>
+      </div>
+    </div>
   );
 };
 
