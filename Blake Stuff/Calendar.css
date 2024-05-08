@@ -1,0 +1,104 @@
+.Schedule {
+    display: grid;
+}
+
+.Bordered {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.DayLabel {
+    grid-row: 1;
+}
+
+.TimeLabel {
+    grid-column: 1;
+}
+
+.Thu {
+	grid-column: 5;
+}
+
+.Tue {
+	grid-column: 3;
+}
+
+.Wed {
+	grid-column: 4;
+}
+
+.Sat {
+	grid-column: 7;
+}
+
+.Fri {
+	grid-column: 6;
+}
+
+.Mon {
+	grid-column: 2;
+}
+
+.Sun {
+	grid-column: 8;
+}
+
+.Hour11 {
+	grid-row: 7;
+}
+
+.Hour12 {
+	grid-row: 8;
+}
+
+.Hour13 {
+	grid-row: 9;
+}
+
+.Hour14 {
+	grid-row: 10;
+}
+
+.Hour15 {
+	grid-row: 11;
+}
+
+.Hour16 {
+	grid-row: 12;
+}
+
+.Hour17 {
+	grid-row: 13;
+}
+
+.Hour18 {
+	grid-row: 14;
+}
+
+.Hour19 {
+	grid-row: 15;
+}
+
+.Hour6 {
+	grid-row: 2;
+}
+
+.Hour7 {
+	grid-row: 3;
+}
+
+.Hour8 {
+	grid-row: 4;
+}
+
+.Hour9 {
+	grid-row: 5;
+}
+
+.Hour20 {
+	grid-row: 16;
+}
+
+.Hour10 {
+	grid-row: 6;
+}
