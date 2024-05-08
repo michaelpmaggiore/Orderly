@@ -20,6 +20,10 @@ const AddClass = () => {
     sun: false,
   });
 
+  const handleGoBack = () => {
+    navigate(`/schedule/${userId}`);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -89,6 +93,11 @@ const AddClass = () => {
         </div>
       </label>
       <button type="submit">Add Class</button>
+      <label></label>
+      <label></label>
+      <label></label>
+
+      <button type="button" onClick={handleGoBack}>Go back to schedule</button>
     </form>
   );
 };

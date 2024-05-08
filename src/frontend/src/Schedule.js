@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, useRouteMatch, useParams} from 'react-router-dom';
+import { Link, useRouteMatch, useParams, useNavigate,} from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -10,20 +10,25 @@ const localizer = momentLocalizer(moment);
 
 function Schedule() {
   const [schedule, setSchedule] = useState([]);
-  const userId = useContext(UserContext);
+  const navigate = useNavigate();
+
+    const { userId } = useParams();
+
+
   useEffect(() => {
-    fetch(`http://localhost:3001/schedule`)
+    fetch(`http://localhost:3001/schedule/${userId}`)
       .then(response => response.json())
-      .then(data => {
-        const events = data
-          .filter(classItem => classItem.name && classItem.start && classItem.end)
-          .map(classItem => ({
-            title: classItem.name,
-            start: new Date(classItem.start),
-            end: new Date(classItem.end),
-          }));
-        setSchedule(events);
-      });
+    //   console.log(userId);
+    //   .then(data => {
+    //     const events = data
+    //       .filter(classItem => classItem.name && classItem.start && classItem.end)
+    //       .map(classItem => ({
+    //         title: classItem.name,
+    //         start: new Date(classItem.start),
+    //         end: new Date(classItem.end),
+    //       }));
+    //     setSchedule(events);
+    //   });
   }, []);
 
   return (
@@ -39,7 +44,8 @@ function Schedule() {
             style={{ height: 500 }}
         />
       )}
-    <Link to={`/schedule/new/${userId['userId']}`} className="add-class-button">Add New Class</Link>    </div>
+    <Link to={`/schedule/new/${userId}`} className="add-class-button">Add New Class</Link>    
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useNavigate, Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TodoList from './TodoList';
 import TodoDetail from './TodoDetail';
 import NewTodo from './NewTodo';
@@ -19,12 +19,28 @@ import AddClass from './AddClass';
 
 function App() {
   const [userId, setUserId] = useState(null);
+    function LogoutButton() {
+      const navigate = useNavigate();
+    
+      const handleLogout = () => {
 
+        navigate('/login');
+      };
+    
+      return (
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      );
+    }
+  
+  
 
   return (
     <UserContext.Provider value={{userId, setUserId}}>
-
       <Router>
+        <LogoutButton />
+
         <Routes>
           <Route path="/project" element={<ProjectList />} />
           <Route path="/project/new" element={<NewProject />} />
@@ -38,7 +54,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} component={Project} />
           <Route path="/login" element={<Login />} /> 
           <Route path="/register" element={<Register />} />
-          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/schedule/:userId" element={<Schedule />} />
           <Route path="/schedule/new/:userId" element={<AddClass />} />
 
           {/* These routes is to pass the front end requirement of frontend routes. Serves no other purpose. */}

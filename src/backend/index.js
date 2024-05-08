@@ -228,12 +228,11 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/schedule/new', async (req, res) => {
-    console.log("WHATTTT")
     const user = await User.findById(req.body.userId).catch(e => console.error(e));
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-  
+
     const classItem = new Class({
       class_name: req.body.class_name,
       class_code: req.body.class_code,
@@ -247,10 +246,14 @@ app.post('/schedule/new', async (req, res) => {
     res.status(201).json(classItem);
   });
 
-// app.get('/schedule', async (req, res) => {
-//     const user = await User.findById(req.user._id);
-//     res.json(user.classes);
-// });
+app.get('/schedule/:userId', async (req, res) => {
+    const user = await User.findById(req.params.userId).catch(e => console.error(e));
+    res.json(user.classes);
+    console.log(user) // print for debugging for json format of user and classes.
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+});
 
 // app.post('/schedule', async (req, res) => {
 //     const user = await User.findById(req.user._id);

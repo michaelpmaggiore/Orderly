@@ -35,7 +35,7 @@ const LoginPage = () => {
 
         setUserId(data._id);
         alert('Login successful, redirecting to main schedule page...');
-        navigate('/schedule'); 
+        navigate(`/schedule/${data._id}`); 
       } else {
         alert('Login failed');
       }
