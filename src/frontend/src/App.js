@@ -10,12 +10,15 @@ import Project from './ProjectList'
 import './App.css';
 import HomePage from './HomePage';
 
+import Login from './Login';
+import Register from './Register';
+import Schedule from './Schedule';
+import ClassID from './ClassID';
+
 function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<HomePage />} component={Project} />
-
         <Route path="/project" element={<ProjectList />} />
         <Route path="/project/new" element={<NewProject />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
@@ -23,6 +26,15 @@ function App() {
         <Route path="/project/:projectId/todo" element={<TodoList />} />
         <Route path="/project/:projectId/todo/new" element={<NewTodo />} />
         <Route path="/project/:projectId/todo/:todoId" element={<TodoDetail />} /> 
+      
+
+        <Route exact path="/" element={<HomePage />} component={Project} />
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} />
+        <Route path="/schedule" element={<Schedule />} />
+
+        {/* These routes is to pass the front end requirement of frontend routes. Servers no other purpose. */}
+        <Route path="/class/:id" element={<ClassID />} /> 
       </Routes>
     </Router>
   );
