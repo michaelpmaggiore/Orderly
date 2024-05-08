@@ -6,7 +6,7 @@ import NewTodo from './NewTodo';
 import ProjectList from './ProjectList'; // Component to display all projects
 import NewProject from './NewProject'; // Component to create a new project
 import ProjectDetail from './ProjectDetail'; // Component to display todos in a project
-import Project from './ProjectList'
+import Project from './ProjectList';
 import './App.css';
 import HomePage from './HomePage';
 
@@ -35,6 +35,7 @@ function App() {
 
         {/* These routes is to pass the front end requirement of frontend routes. Servers no other purpose. */}
         <Route path="/class/:id" element={<ClassID />} /> 
+
       </Routes>
     </Router>
   );
