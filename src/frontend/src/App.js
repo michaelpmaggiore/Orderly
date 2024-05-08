@@ -6,7 +6,8 @@ import NewTodo from './NewTodo';
 import ProjectList from './ProjectList'; // Component to display all projects
 import NewProject from './NewProject'; // Component to create a new project
 import ProjectDetail from './ProjectDetail'; // Component to display todos in a project
-import Project from './ProjectList'
+import Project from './ProjectList';
+import Login from './Login.js';
 import './App.css';
 import HomePage from './HomePage';
 
@@ -23,6 +24,8 @@ function App() {
         <Route path="/project/:projectId/todo" element={<TodoList />} />
         <Route path="/project/:projectId/todo/new" element={<NewTodo />} />
         <Route path="/project/:projectId/todo/:todoId" element={<TodoDetail />} /> 
+
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
