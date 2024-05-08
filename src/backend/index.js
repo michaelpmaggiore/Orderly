@@ -228,11 +228,24 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/schedule/new', async (req, res) => {
-
-    const classItem = new Class(req.body);
-
+    console.log("WHATTTT")
+    const user = await User.findById(req.body.userId).catch(e => console.error(e));
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    const classItem = new Class({
+      class_name: req.body.class_name,
+      class_code: req.body.class_code,
+      crn: req.body.crn,
+      instructor: req.body.instructor,
+      time: req.body.time,
+      days: req.body.days,
+    });
+    user.classes.push(classItem);
+    await user.save();
     res.status(201).json(classItem);
-});
+  });
 
 // app.get('/schedule', async (req, res) => {
 //     const user = await User.findById(req.user._id);

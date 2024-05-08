@@ -37,10 +37,8 @@ function NewTodo() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       setDescription('');
       setName('');
-      console.log(completed);
     });
   }
 

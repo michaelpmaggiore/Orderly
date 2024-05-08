@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useRouteMatch  } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, useRouteMatch, useParams} from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './Schedule.css';
+import UserContext from './UserContext';
 
 const localizer = momentLocalizer(moment);
 
 function Schedule() {
   const [schedule, setSchedule] = useState([]);
-
+  const userId = useContext(UserContext);
   useEffect(() => {
     fetch(`http://localhost:3001/schedule`)
       .then(response => response.json())
@@ -38,8 +39,7 @@ function Schedule() {
             style={{ height: 500 }}
         />
       )}
-      <Link to="/schedule/new" className="add-class-button">Add New Class</Link>
-    </div>
+    <Link to={`/schedule/new/${userId['userId']}`} className="add-class-button">Add New Class</Link>    </div>
   );
 }
 

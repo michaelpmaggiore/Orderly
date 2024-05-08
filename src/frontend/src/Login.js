@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
+import UserContext from './UserContext';
 
 const LoginPage = () => {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setUserId } = useContext(UserContext);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -28,6 +30,10 @@ const LoginPage = () => {
     .then(response => response.json())
     .then(data => {
       if (data._id) {
+        // After successful login...
+        // console.log(data._id)
+
+        setUserId(data._id);
         alert('Login successful, redirecting to main schedule page...');
         navigate('/schedule'); 
       } else {

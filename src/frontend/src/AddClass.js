@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const AddClass = () => {
   const navigate = useNavigate();
-  const [className, setClassName] = useState('');
-  const [classCode, setClassCode] = useState('');
+  const { userId } = useParams();
+
+  const [class_name, setClassName] = useState('');
+  const [class_code, setClassCode] = useState('');
   const [crn, setCrn] = useState('');
   const [instructor, setInstructor] = useState('');
   const [time, setTime] = useState('');
@@ -26,11 +28,10 @@ const AddClass = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ className, classCode, crn, instructor, time, days }),
+      body: JSON.stringify({ userId, class_name, class_code, crn, instructor, time, days }),
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
       if (data._id) {
         alert('Class added successfully');
         navigate('/schedule');
@@ -44,11 +45,11 @@ const AddClass = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Class Name:
-        <input type="text" value={className} onChange={e => setClassName(e.target.value)} />
+        <input type="text" value={class_name} onChange={e => setClassName(e.target.value)} />
       </label>
       <label>
         Class Code:
-        <input type="text" value={classCode} onChange={e => setClassCode(e.target.value)} />
+        <input type="text" value={class_code} onChange={e => setClassCode(e.target.value)} />
       </label>
       <label>
         CRN:
